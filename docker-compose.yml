@@ -1,0 +1,11 @@
+version: "3"
+services:
+  ampervue:
+    build:
+      context: ./
+    image: python-cron
+    container_name: airinfo
+    volumes:
+      - .:/app
+    ports:
+      - 8080:8080

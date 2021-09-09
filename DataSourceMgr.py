@@ -1,3 +1,4 @@
+from time import time
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
@@ -28,7 +29,7 @@ def chrome_connect(path, url, headless):
 
 class DataSourceMgr:
 
-    def __init__(self, path="./chromedriver_win32/chromedriver.exe",
+    def __init__(self, path="./chromedriver",
                  url="https://www.viennaairport.com/passagiere/ankunft__abflug/abfluege",
                  headless=True) -> None:
         self.path = path
