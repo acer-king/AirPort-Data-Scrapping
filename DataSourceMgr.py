@@ -1,13 +1,16 @@
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.support import expected_conditions as EC
 import contextlib
-import time
 
 
 @contextlib.contextmanager
 def chrome_connect(path, url, headless):
+    """
+    connect to chrome driver
+    """
     # Set up a database connection
     options = webdriver.ChromeOptions()
     if headless:
@@ -16,8 +19,8 @@ def chrome_connect(path, url, headless):
     driver.get(url)
     try:
         yield driver
-    except Exception as e:
-        print(e)
+    except WebDriverException as err:
+        print(err)
     finally:
         # Close the connection
         driver.quit()
@@ -60,9 +63,4 @@ class DataSourceMgr:
                     for cell in cells:
                         item.append(cell.text)
                     self.datas.append(item)
-
-
-A = DataSourceMgr(headless=True)
-
-A.getDatasFromTable()
-print(len(A.datas))
+        return self.datas
