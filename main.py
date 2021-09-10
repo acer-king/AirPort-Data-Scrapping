@@ -25,8 +25,9 @@ def main():
     if os.path.exists("./sqlite_test.db"):
         os.remove("sqlite_test.db")
     else:
-        print("pls remove old sql file")
-        return
+        print("udpating database...")
+        pass
+
     domgr = DOMgr()
     for row in results:
         try:
