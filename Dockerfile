@@ -22,7 +22,7 @@ RUN python -m pip install -U pip
 RUN pip install -r requirements.txt
 RUN apt-get install -y libnss3
 ENV DISPLAY=:99
-
+RUN cp /app/chromedriver /usr/bin/chromedriver
 
 # run crond as main process of container
 CMD ["cron", "-f"]

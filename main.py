@@ -4,6 +4,7 @@ from DataUtil import DataUtil as DUtil
 from datetime import datetime
 from sqlite3 import OperationalError
 from time import sleep
+import os
 
 
 def main():
@@ -21,6 +22,11 @@ def main():
         if(temp is None):
             continue
     # update database with this results.
+    if os.path.exists("./sqlite_test.db"):
+        os.remove("sqlite_test.db")
+    else:
+        print("pls remove old sql file")
+        return
     domgr = DOMgr()
     for row in results:
         try:
