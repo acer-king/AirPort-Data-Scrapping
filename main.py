@@ -25,7 +25,6 @@ def main():
     for row in results:
         try:
             domgr.upsert(row)
-            sleep(5)
         except OperationalError as err:
             print(err)
         except ValueError as err:

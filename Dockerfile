@@ -16,13 +16,12 @@ RUN apt-get install -y google-chrome-stable
 WORKDIR /app
 COPY crontab /etc/cron.d/crontab
 COPY ./* /app/
-RUN wget -O ./chromedriver.zip https://chromedriver.storage.googleapis.com/93.0.4577.63/chromedriver_linux64.zip
-RUN unzip chromedriver.zip 
 RUN chmod 0644 /etc/cron.d/crontab
 RUN /usr/bin/crontab /etc/cron.d/crontab
 RUN python -m pip install -U pip
 RUN pip install -r requirements.txt
 RUN apt-get install -y libnss3
+ENV DISPLAY=:99
 
 
 # run crond as main process of container
